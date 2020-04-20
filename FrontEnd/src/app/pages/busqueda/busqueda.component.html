@@ -1,0 +1,96 @@
+<div class="row">
+<div class="col-4" *ngIf="medicos.length > 0" style="overflow-x: auto;">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title text-left"> Medicos Registrados ( <small> {{medicos.length}} </small> ) </div>
+      <table class="table table-hover" *ngIf="!cargando" >
+            <thead>
+              <th>Foto</th>
+              <th>Medico</th>
+              <th>Hospital</th>
+
+
+            </thead>
+            <tbody>
+              <tr *ngFor = "let item of medicos">
+                <td>
+                  <img class="img-circle pointer" [src]="item.img | imagen:'hospital' " width="60px">
+                </td>
+                <td>
+                    <div > {{item.nombre}} </div>
+                </td>
+                <td>
+                  {{item.hospital.nombre}}
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-4" *ngIf="hospitales.length > 0" style="overflow-x: auto;">
+  <div class="card">
+    <div class="card-body">
+
+        <h3 class="card-title text-left"> Hospitales Registrados ( <small> {{hospitales.length}} </small> ) </h3>
+
+        <table class="table table-hover" *ngIf="!cargando" >
+            <thead>
+              <th>Foto</th>
+              <th>Hospital</th>
+
+
+            </thead>
+            <tbody>
+              <tr *ngFor = "let item of hospitales">
+                <td>
+                  <img  class="img-circle pointer" [src]="item.img | imagen:'hospital' " width="60px">
+                </td>
+
+                 {{item.nombre}}
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>
+
+
+  <div class="col-4" *ngIf="usuarios.length > 0" style="overflow-x: auto;">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">
+          Usuarios Registrados (<small> {{ usuarios.length }} </small>)
+        </h3>
+
+        <table class="table table-hover" *ngIf="!cargando" >
+          <thead>
+            <th>Imagen</th>
+            <th>Correo</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let usuario of usuarios">
+              <td> <img class="img-circle pointer" [src]="usuario.img | imagen " width="60px">  </td>
+              <td> {{ usuario.email }}</td>
+              <td> {{ usuario.nombre }} </td>
+              <td>
+                  {{ usuario.role }}
+              </td>
+              <td>
+                <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                <label *ngIf="!usuario.google" class="label label-info">Normal</label>
+              </td>
+
+
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

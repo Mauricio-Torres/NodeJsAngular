@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <input #input type="text" (keyup)="buscarMedicos(input.value)" class="form-control" placeholder="Buscar Hospital">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando ... </strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <strong>Espera por favor ... </strong>
+          </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button [routerLink] = "['/medico','nuevo']" type="button" class="btn btn-rounded btn-primary">
+              <i class="fa fa-plus"></i>
+              Crear Medico
+          </button>
+        </div>
+          <div class="card-title text-left"> Medicos Registrados ( <small> {{totalMedicos}} </small> ) </div>
+
+          <table class="table table-hover" *ngIf="!cargando">
+              <thead>
+                <th>Foto</th>
+                <th>Medico</th>
+                <th>Hospital</th>
+                <th>Acciones</th>
+
+              </thead>
+              <tbody>
+                <tr *ngFor = "let item of medicos">
+                  <td>
+                    <img (click)= "actualizarImagenMedico(item._id)" class="img-circle pointer" [src]="item.img | imagen:'hospital' " width="60px">
+                  </td>
+                  <td>
+                      <div > {{item.nombre}} </div>
+                  </td>
+                  <td>
+                    {{item.hospital.nombre}}
+                  </td>
+                    <td>
+                    <button [routerLink] = "['/medico',item._id]" class="btn btn-prymary"><i class="fa fa-save"></i></button>
+                    <button (click)="borrarMedico(item._id)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>

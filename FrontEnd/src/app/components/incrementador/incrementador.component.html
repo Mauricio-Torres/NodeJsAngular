@@ -1,0 +1,26 @@
+<div class="input-group-btn">
+
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-primary" type="button" id="button-addon1"  (click)="onCambiarProgress(-5)">
+      <i class="mdi mdi-minus"></i>
+    </button>
+  </div>
+
+  <input type="number"
+         [(ngModel)] = "porcentaje"
+         (ngModelChange) = "change($event)"
+         class="form-control"
+         #inputPorcentaje
+         placeholder=""
+         aria-label="Example text with button addon"
+         aria-describedby="button-addon1"
+         min="0"
+         max="100">
+
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-primary" type="button" id="button-addon1" (click)="onCambiarProgress(+5)">
+      <i class="mdi mdi-plus"></i>
+    </button>
+  </div>
+
+</div>

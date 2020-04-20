@@ -1,0 +1,62 @@
+<form ngNativeValidate [formGroup]="forma" (ngSubmit)="editarUsuario(forma)"   id="loginform" >
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mi perfil</h4>
+                <h6 class="card-subtitle">Puede editar su perfil</h6>
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label"> Nombre </label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input type="text" name="nom" class="form-control" formControlName="nombre" id="exampleInputuname3" placeholder="Nombre de Usuario" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input type="email" name="email" [disabled]="bloquearCorreo" formControlName="correo" class="form-control" id="exampleInputEmail3" placeholder="Ingrese email" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row m-b-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="submit" class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i>  Guardar</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" aling="center">
+                <h4 class="card-title">Fotografia Usuario</h4>
+                <h6 class="card-subtitle">Cambiar Fotografia</h6>
+
+            <img *ngIf = "!imgTemp" [src]="usuario.img | imagen" class="w150">
+            <img *ngIf="imgTemp" [src]="imgTemp" class="w150">
+            <input (change)="seleccionImg($event)" type="file">
+
+            <br>
+
+            <div class="form-group row m-b-0">
+                <div class="offset-sm-3 col-sm-9">
+
+                    <button (click) = "guardarImg()" [disabled]="!imgSubir" type="button" class="btn btn-success waves-effect waves-light"><i class="fa fa-save"></i> Actualizar Foto</button>
+                </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+</div>
+</form>
